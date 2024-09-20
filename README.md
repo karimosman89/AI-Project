@@ -13,48 +13,67 @@ This repository contains an end-to-end AI project that covers data ingestion, pr
 
 ## Project Structure
 
-AI-Project/
-│
-├── data/                                # Raw and processed data
-│   ├── raw/                             # Raw data (downloaded)
-│   └── processed/                       # Processed data after ETL
-│
-├── dags/                                # Apache Airflow DAGs for orchestration
-│   ├── data_ingestion.py                # Airflow DAG for data ingestion
-│   └── data_preprocessing.py            # Airflow DAG for data preprocessing
-│
-├── src/                                 # Core source code
-│   ├── preprocessing.py                 # Python script for data preprocessing
-│   ├── train_model.py                   # Script to train the ML model
-│   ├── app.py                           # Flask API for serving the model
-│   └── model/                           # Model-related code and artifacts
-│       └── model.pkl                    # Serialized trained model
-│
-├── notebooks/                           # Jupyter Notebooks for EDA, experiment tracking
-│   └── eda.ipynb                        # Exploratory Data Analysis notebook
-│
-├── mlruns/                              # MLflow artifacts (tracked experiments)
-│   └── 0/                               # MLflow experiment folders
-│
-├── docker/                              # Docker-related files
-│   ├── Dockerfile                       # Dockerfile for containerizing the app
-│   └── docker-compose.yml               # Compose file for multi-container setup
-│
-├── k8s/                                 # Kubernetes configuration for EKS deployment
-│   ├── deployment.yaml                  # Kubernetes deployment configuration
-│   ├── service.yaml                     # Kubernetes service configuration
-│   └── configmap.yaml                   # ConfigMap for environment variables
-│
-├── .github/                             # GitHub Actions CI/CD pipeline
-│   └── workflows/
-│       └── main.yml                     # GitHub Actions for CI/CD pipeline
-│
-├── requirements.txt                     # Python dependencies
-├── Dockerfile                           # Docker configuration for app containerization
-├── README.md                            # Documentation
-├── app.py                               # Flask API for model inference
-├── config.py                            # Configuration file (paths, hyperparameters, etc.)
-└── setup.py                             # Python package setup file
+       AI-Project/
+                 │
+                 ├── data/                                # Raw and processed data
+                         │   
+                         ├── raw/                             # Raw data (downloaded)
+                         │   
+                         └── processed/                       # Processed data after ETL
+                 │
+                 ├── dags/                                # Apache Airflow DAGs for orchestration
+                         │ 
+                         ├── data_ingestion.py                # Airflow DAG for data ingestion
+                         │
+                         └── data_preprocessing.py            # Airflow DAG for data preprocessing
+                 │
+                 ├── src/                                 # Core source code
+                        │ 
+                        ├── preprocessing.py                 # Python script for data preprocessing
+                        │
+                        ├── train_model.py                   # Script to train the ML model
+                        │ 
+                        ├── app.py                           # Flask API for serving the model
+                        │
+                        └── model/                           # Model-related code and artifacts
+                                 │     
+                                 └── model.pkl                    # Serialized trained model
+                 │
+                 ├── notebooks/                           # Jupyter Notebooks for EDA, experiment tracking
+                              │
+                              └── eda.ipynb                        # Exploratory Data Analysis notebook
+                 │
+                 ├── mlruns/                              # MLflow artifacts (tracked experiments)
+                           │
+                           └── 0/                               # MLflow experiment folders
+                 │
+                 ├── docker/                              # Docker-related files
+                           │
+                           ├── Dockerfile                       # Dockerfile for containerizing the app
+                           │
+                           └── docker-compose.yml               # Compose file for multi-container setup
+                 │
+                 ├── k8s/                                 # Kubernetes configuration for EKS deployment
+                        │
+                        ├── deployment.yaml                  # Kubernetes deployment configuration
+                        │ 
+                        ├── service.yaml                     # Kubernetes service configuration
+                        │
+                        └── configmap.yaml                   # ConfigMap for environment variables
+                 │
+                 ├── .github/                             # GitHub Actions CI/CD pipeline
+                            │
+                            └── workflows/
+                                         │
+                                         └── main.yml                     # GitHub Actions for CI/CD pipeline
+                 │
+                 ├── requirements.txt                     # Python dependencies
+                 ├── Dockerfile                           # Docker configuration for app containerization
+                 ├── README.md                            # Documentation
+                 ├── app.py                               # Flask API for model inference
+                 ├── config.py                            # Configuration file (paths, hyperparameters, etc.)
+                 └── setup.py                             # Python package setup file
+
 
 
 
@@ -102,11 +121,12 @@ docker run -p 5000:5000 flask-app
 ## Deployment with Kubernetes
 
 1. **Apply the deployment:**
-
+ 
 kubectl apply -f k8s/deployment.yaml
+
 2. **Apply the service:**
 
-kubectl apply -f k8s/service.yaml
+  kubectl apply -f k8s/service.yaml
 
 ## CI/CD Pipeline
 
