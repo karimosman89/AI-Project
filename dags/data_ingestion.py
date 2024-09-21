@@ -1,32 +1,42 @@
 from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
-from airflow.utils.dates import days_ago
+from airflow.operators.python_operator import PythonOperator
+from datetime import datetime, timedelta
+import os
+import requests
+import zipfile
+
+def download_data():
+    url = "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
+    data_path = "/opt/airflow/data/raw/"
+    
+    os.makedirs(data_path, exist_ok=True)
+    response = requests.get(url, stream=True)
+    with open(os.path.join(data_path, "cifar-10-python.tar.gz"), "wb") as file:
+        file.write(response.content)
+
+    with zipfile.ZipFile(os.path.join(data_path, "cifar-10-python.tar.gz"), "r") as zip_ref:
+        zip_ref.extractall(data_path)
 
 default_args = {
-    'owner': 'airflow',
-    'start_date': days_ago(1),
-    'retries': 1
+    "owner": "airflow",
+    "depends_on_past": False,
+    "start_date": datetime(2023, 1, 1),
+    "email_on_failure": False,
+    "email_on_retry": False,
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5),
 }
 
 dag = DAG(
-    'data_ingestion',
+    "data_ingestion",
     default_args=default_args,
-    schedule_interval='@daily'
+    description="Ingest CIFAR-10 dataset",
+    schedule_interval=timedelta(days=1),
 )
 
-# Download CIFAR-10 data
-download_data = BashOperator(
-    task_id='download_cifar10',
-    bash_command="curl -o /data/raw/train.7z <CIFAR-10-dataset-url>",
-    dag=dag
+download_task = PythonOperator(
+    task_id="download_data",
+    python_callable=download_data,
+    dag=dag,
 )
-
-# Extract train and test images
-extract_data = BashOperator(
-    task_id='extract_data',
-    bash_command='7z x /data/raw/train.7z -o/data/raw/',
-    dag=dag
-)
-
-download_data >> extract_data
 
