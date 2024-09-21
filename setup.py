@@ -1,23 +1,27 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='ai_project',
-    version='0.1.0',
+    name="AI-Project-CIFAR10",
+    version="1.0",
     packages=find_packages(),
     install_requires=[
-        'flask',
-        'pandas',
-        'scikit-learn',
-        'mlflow',
-        'joblib',
+        "tensorflow==2.6.0",
+        "flask",
+        "pandas",
+        "mlflow",
+        "numpy",
+        "Pillow",
+        "airflow",
+        "boto3",
+        "kubernetes",
+        "scikit-learn",
+        "matplotlib"
     ],
     entry_points={
-        'console_scripts': [
-            'preprocess=src.preprocessing:preprocess_data',
-            'train=src.train_model:train_model',
-        ],
-    },
-    author='Your Name',
-    description='End-to-end AI project with ML training, API deployment, and CI/CD pipeline',
-    license='MIT'
+        "console_scripts": [
+            "train_model=src.train_model:train_model",
+            "preprocess_images=src.preprocessing:preprocess_images"
+        ]
+    }
 )
+
