@@ -1,6 +1,27 @@
 # End-to-End AI Project
 
 This repository contains an end-to-end AI project that covers data ingestion, preprocessing, model training, and deployment, along with CI/CD and orchestration tools.
+# CIFAR-10 Image Classification
+
+A complete project using CIFAR-10 for image classification, showcasing Data Engineering, AI, Machine Learning, and DevOps skills. The project includes a fully automated pipeline using Airflow, Docker, and Kubernetes.
+
+### Main Features:
+- **Model Training**: CNN with TensorFlow.
+- **Deployment**: Flask API containerized and deployed on Kubernetes (EKS).
+- **Monitoring**: Real-time monitoring with Prometheus and Grafana.
+
+## Setup Instructions
+1. Clone the repository.
+2. Install dependencies with `pip install -r requirements.txt`.
+3. Run the Docker container: `docker-compose up`.
+4. Access the Flask API at `http://localhost:5000/predict`.
+
+## Key Technologies
+- Apache Airflow for orchestration.
+- TensorFlow for model training.
+- Flask for API deployment.
+- Docker & Kubernetes for containerization and orchestration.
+- Terraform for infrastructure as code.
 
 ## Features
 
