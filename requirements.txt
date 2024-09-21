@@ -1,30 +1,30 @@
 # Flask for API
-Flask>=2.0.0,<3.0.0
+Flask==2.1.1
 
 # Data manipulation and analysis
-pandas>=1.1.0,<2.0.0
-numpy>=1.19.0,<2.0.0
+pandas==1.3.3
+numpy==1.21.2
 
 # Machine Learning
-scikit-learn>=1.0,<2.0.0
-mlflow>=1.20.0,<2.0.0
-joblib>=1.0.0,<2.0.0
+scikit-learn==1.0
+mlflow==1.20.2  # Adjusted version
+joblib==1.0.1
 
 # Deep Learning
-tensorflow>=2.5.0,<3.0.0
+tensorflow==2.8.0
 
 # Image processing
-Pillow>=8.0.0,<9.0.0
+Pillow==8.4.0
 
 # Workflow orchestration
-apache-airflow>=2.2.0,<3.0.0
+apache-airflow==2.2.5  # Adjusted version
 
 # Kubernetes interaction
-kubernetes>=23.0.0,<24.0.0
+kubernetes==23.3.0
 
 # Testing
-pytest>=6.0.0,<8.0.0
-requests>=2.25.0,<3.0.0
+pytest==7.1.2
+requests==2.27.1
 
 # Other utilities
-gunicorn>=20.0.0,<21.0.0
+gunicorn==20.1.0
