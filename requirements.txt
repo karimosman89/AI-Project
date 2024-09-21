@@ -1,31 +1,30 @@
 # Flask for API
-Flask==2.1.1
+Flask>=1.1.0,<2.0.0  # Allowing versions below 2.0.0 for compatibility
 
 # Data manipulation and analysis
-pandas==1.3.3
-numpy==1.21.2
+pandas>=1.1.0,<2.0.0
+numpy>=1.19.0,<2.0.0
 
 # Machine Learning
-scikit-learn==1.0
-mlflow==1.19.0  # This version should be compatible with alembic
-joblib==1.0.1
+scikit-learn>=1.0,<2.0.0
+mlflow>=1.19.0,<2.0.0  # Compatible with Flask < 2.0.0
+joblib>=1.0.0,<2.0.0
 
 # Deep Learning
-tensorflow==2.8.0
+tensorflow>=2.5.0,<3.0.0
 
 # Image processing
-Pillow==8.4.0
+Pillow>=8.0.0,<9.0.0
 
 # Workflow orchestration
-apache-airflow==2.1.4  # An earlier version that may work with alembic
-# Ensure this version has the required features you need
+apache-airflow>=2.1.0,<3.0.0  # Ensure it works with Flask < 2.0.0
 
 # Kubernetes interaction
-kubernetes==23.3.0
+kubernetes>=23.0.0,<24.0.0
 
 # Testing
-pytest==7.1.2
-requests==2.27.1
+pytest>=6.0.0,<8.0.0
+requests>=2.25.0,<3.0.0
 
 # Other utilities
-gunicorn==20.1.0
+gunicorn>=20.0.0,<21.0.0
