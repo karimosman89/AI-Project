@@ -1,10 +1,34 @@
 version: '3'
 services:
-  web:
-    build: .
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     environment:
-      - FLASK_ENV=development
+      - MODEL_PATH=/app/src/model/model.h5
+      - DATA_PATH=/app/data/processed/
+      - EPOCHS=10
+      - BATCH_SIZE=32
     volumes:
-      - .:/app
+      - ./src:/app/src
+      - ./data:/app/data
+    depends_on:
+      - mlflow-server
+
+  mlflow-server:
+    image: mlflow:latest
+    ports:
+      - "5001:5001"
+    environment:
+      - MLFLOW_TRACKING_URI=http://localhost:5001
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./monitoring/grafana:/var/lib/grafana
