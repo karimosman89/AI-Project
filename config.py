@@ -1,12 +1,9 @@
 import os
 
 class Config:
-    # Load environment variables
-    DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///default.db')
-    MODEL_PATH = os.getenv('MODEL_PATH', 'model/model.pkl')
-    LOG_LEVEL = os.getenv('LOG_LEVEL', 'warning')
-
-    # Machine Learning specific hyperparameters
-    RANDOM_STATE = 42
-    TEST_SIZE = 0.2
-    N_ESTIMATORS = 100  # for RandomForest
+    MODEL_PATH = os.getenv('MODEL_PATH', 'src/model/model.h5')
+    DATA_PATH = os.getenv('DATA_PATH', 'data/processed/')
+    EPOCHS = int(os.getenv('EPOCHS', 10))
+    BATCH_SIZE = int(os.getenv('BATCH_SIZE', 32))
+    FLASK_HOST = os.getenv('FLASK_HOST', '0.0.0.0')
+    FLASK_PORT = int(os.getenv('FLASK_PORT', 5000))
