@@ -1,14 +1,21 @@
-import pandas as pd
-from sklearn.preprocessing import StandardScaler
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+import os
 
-def preprocess_data(input_path, output_path):
-    df = pd.read_csv(input_path)
-    
-    # Perform preprocessing (e.g., scaling numerical features)
-    scaler = StandardScaler()
-    df[['feature1', 'feature2']] = scaler.fit_transform(df[['feature1', 'feature2']])
-    
-    df.to_csv(output_path, index=False)
+def preprocess_images(input_dir, output_dir):
+    """
+    Preprocess CIFAR-10 images using TensorFlow's ImageDataGenerator.
+    """
+    datagen = ImageDataGenerator(rescale=1.0/255.0)
+
+    for img_name in os.listdir(input_dir):
+        img_path = os.path.join(input_dir, img_name)
+        img = tf.keras.preprocessing.image.load_img(img_path, target_size=(32, 32))
+        img_array = tf.keras.preprocessing.image.img_to_array(img)
+        img_array = img_array.reshape((1,) + img_array.shape)
+
+        for batch in datagen.flow(img_array, batch_size=1, save_to_dir=output_dir, save_prefix='aug', save_format='png'):
+            break
 
 if __name__ == "__main__":
-    preprocess_data('data/raw/data.csv', 'data/processed/processed_data.csv')
+    preprocess_images('data/raw/train', 'data/processed/')
