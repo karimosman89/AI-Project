@@ -25,6 +25,17 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Start Flask App
+        run: |
+          export FLASK_APP=app.py
+          flask run --host=0.0.0.0 --port=5000 &
+        env:
+          FLASK_ENV: development
+
+      - name: Wait for Flask to be ready
+        run: |
+          timeout 30 sh -c 'until nc -zv localhost 5000; do echo "Waiting for Flask..."; sleep 1; done'
+
       - name: Run Tests
         run: |
           pytest
