@@ -159,7 +159,9 @@ A complete project using CIFAR-10 for image classification, showcasing Data Engi
 
 2. **Run the container:**
 
-      docker run -p 5000:5000 flask-app
+
+       docker run -p 5000:5000 flask-app
+
 
 ## Deployment with Kubernetes
 
