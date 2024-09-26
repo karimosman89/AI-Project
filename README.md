@@ -1,4 +1,4 @@
-# End-to-End AI Project
+#  AI Project
 
 This repository contains an end-to-end AI project that covers data ingestion, preprocessing, model training, and deployment, along with CI/CD and orchestration tools.
 # CIFAR-10 Image Classification
@@ -12,8 +12,14 @@ A complete project using CIFAR-10 for image classification, showcasing Data Engi
 
 ## Setup Instructions
 1. Clone the repository.
-2. Install dependencies with `pip install -r requirements.txt`.
-3. Run the Docker container: `docker-compose up`.
+2. Install dependencies with:
+
+     `pip install -r requirements.txt`.
+   
+3. Run the Docker container:
+  
+     `docker-compose up`.
+   
 4. Access the Flask API at `http://localhost:5000/predict`.
 
 ## Key Technologies
@@ -118,36 +124,44 @@ A complete project using CIFAR-10 for image classification, showcasing Data Engi
 
 
 2. **Install dependencies:**
-     pip install -r requirements.txt
+
+   
+        pip install -r requirements.txt
 
 3. **Run Preprocessing:**
-    python src/preprocessing.py
+
+   
+       python src/preprocessing.py
 
 4. **Train the Model:**
-    python src/train_model.py
 
-6. **Run the Flask API:**
-    python src/app.py
+   
+       python src/train_model.py
+
+5. **Run the Flask API:**
+
+   
+        python src/app.py
 
 ## Running with Docker
 
 1. **Build the Docker image:**
 
-docker build -t flask-app .
+       docker build -t flask-app .
 
 2. **Run the container:**
 
-docker run -p 5000:5000 flask-app
+      docker run -p 5000:5000 flask-app
 
 ## Deployment with Kubernetes
 
 1. **Apply the deployment:**
  
-kubectl apply -f k8s/deployment.yaml
+       kubectl apply -f k8s/deployment.yaml
 
 2. **Apply the service:**
 
-  kubectl apply -f k8s/service.yaml
+        kubectl apply -f k8s/service.yaml
 
 ## CI/CD Pipeline
 
