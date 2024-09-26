@@ -14,13 +14,21 @@ A complete project using CIFAR-10 for image classification, showcasing Data Engi
 1. Clone the repository.
 2. Install dependencies with:
 
-     `pip install -r requirements.txt`.
+
+         pip install -r requirements.txt 
+
    
 3. Run the Docker container:
+
   
-     `docker-compose up`.
+       `docker-compose up`.
+
    
-4. Access the Flask API at `http://localhost:5000/predict`.
+4. Access the Flask API at
+
+
+          `http://localhost:5000/predict`
+
 
 ## Key Technologies
 - Apache Airflow for orchestration.
